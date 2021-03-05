@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Grade Calculator</title>
+	<script type="text/javascript">
+		//processInputOutput function requests the user's grades, calls the other functions and displays our outputs.
+		function processInputOutput(){
+
+			//request input and set input equal to the grade
+			let exam1 = parseFloat(prompt("Please enter your 1st grade into the calculator:"));
+			let exam2 = parseFloat(prompt("Please enter your 2nd grade into the calculator:"));
+			let exam3 = parseFloat(prompt("Please enter your 3rd grade into the calculator:"));
+			
+			//display grade in output
+			document.write("Your 3 exam scores are: <br>");
+			document.write("Exam 1: "  + exam1 + "<br>");
+			document.write("Exam 2: "  + exam2 + "<br>");
+			document.write("Exam 3: "  + exam3 + "<br>");
+			//set exams to gradeTotal
+			let gradeTotal = exam1 + exam2 + exam3;
+			//assign local variables to corresponding functions to keep organized
+			let gradeAverage = averageGrade(gradeTotal).toFixed(0);
+			let letterGrade = assignLetterGrade(gradeAverage);
+			//display average
+			document.write("Average: " + gradeAverage + "<br>");
+
+			//display course grade 
+			document.write("Course grade: " + letterGrade + "<br>");
+
+			//display message from switchMessage function
+			document.write(switchMessage(letterGrade));  
+		}//end processInputOutput
+
+		//averageGrade function takes the gradeTotal from input/output and averages it by 3
+		function averageGrade(gradeTotal){
+			let gradeAverage = gradeTotal/3;
+
+			return gradeAverage;
+		}//end averageGrade
+
+		//assignLetterGrade takes the averageGrade function and assigns it to a letter
+		function assignLetterGrade(gradeAverage){
+			//define variables for letter grade and phrase
+			let letterGrade;
+			
+			//series of if statements to assign letter grade
+			if(gradeAverage >= 91){
+				letterGrade = "A";
+				
+			}//end letter grade A 
+			else if(gradeAverage >=81){
+				letterGrade = "B";
+				
+			}//end else letter grade B
+			else if(gradeAverage >=71){
+				letterGrade = "C";
+				
+			}//end else letter grade C
+			else if(gradeAverage >=65){
+				letterGrade = "D";
+				
+			}//end else letter grade D
+			else{
+				letterGrade = "F";
+				
+			}//end else failure
+
+			//return letter grade
+			return letterGrade;
+		}//end assignLetterGrade
+
+		//switchMessage function uses a switch statment to assign the message based upon the letter grade
+		function switchMessage(letterGrade){
+
+		//declare local variable 
+		let message;
+		//switch statement to assign statements
+		switch(letterGrade){
+			case "A":
+			message ="Great job, keep it up";
+			break;
+			case "B":
+			message = "Very nice work";
+			break;
+			case "C":
+			message = "You can do it, keep studying";
+			break;
+			case"D":
+			message ="You need some help, see the teacher";
+			break;
+			default:
+			message = "Please schedule an apointment with your advisor";
+		}//end switch statement tree
+
+		return message;
+	}//end switchMessage function
+
+	</script>
+</head>
+<body style="background-color: pink;">
+
+	<script type="text/javascript">
+		
+		processInputOutput(); 
+	</script>
+</body>
+</html>
